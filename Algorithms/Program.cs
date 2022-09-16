@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using Algorithms.tasks;
+using Algorithms.tasks.third;
 
 namespace Algorithms
 {
     class Program
     {
         private static readonly int[] Array = NumbersArray.Numbers;
-        
+
 
         private static readonly List<Algorithm> Algorithms = new List<Algorithm>()
         {
@@ -20,6 +21,12 @@ namespace Algorithms
 
         static void Main(string[] args)
         {
+            // var inf = uint.MaxValue;
+            // var graph = new uint[,]{{0, inf, 2, inf}, {4, 0, 3, inf}, {inf, inf, 0, 2}, {inf, 1, inf, 0}};
+            // FloydWarshallAlgorithm.Calculate(graph);
+            var first = new int[,] {{1, 2, -1}, {0, 1, 2}};
+            var second = new int[,] {{3, 1}, {-1, 2}, {1, 2}};
+            var r = Matrix.MultipleMatrix(first, second);
             Stopwatch stopwatch = new Stopwatch();
             // stopwatch.Start();
             // PowFunctions solution = new PowFunctions();
@@ -57,6 +64,7 @@ namespace Algorithms
                         var ticks = stopwatch.ElapsedTicks;
                         Console.WriteLine($"\t{j}) {ticks} tick");
                     }
+
                     limit += 500;
                 }
             }
