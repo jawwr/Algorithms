@@ -1,8 +1,8 @@
 ﻿namespace Algorithms.tasks
 {
-    public class FifthSolution
+    public class BoubleSort
     {
-        public static double[] Calculate(double[] vector)
+        public int[] Calculate(int[] vector)
         {
             for (int i = 0; i < vector.Length; i++)
             {

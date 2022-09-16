@@ -1,6 +1,6 @@
 ﻿namespace Algorithms.tasks
 {
-    public class EighthSolution
+    public class PowFunctions
     {
         public int Pow(int num, int rank)
         {

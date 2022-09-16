@@ -1,10 +1,12 @@
 ﻿namespace Algorithms.tasks
 {
-    public class SecondSolution
+    public class SumFunction : Algorithm
     {
-        public static double Calculate(double[] vector)
+        public override string GetAlgName() => "SumFunction";
+
+        public override int Calculate(int[] vector)
         {
-            double result = 0;
+            int result = 0;
             foreach (var num in vector)
             {
                 result += num;
