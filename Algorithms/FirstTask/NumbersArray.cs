@@ -1,4 +1,4 @@
-﻿namespace Algorithms.tasks
+﻿namespace Algorithms.FirstTask
 {
     public record NumbersArray
     {

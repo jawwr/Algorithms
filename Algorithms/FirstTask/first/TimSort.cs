@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Data;
 
-namespace Algorithms.tasks
+namespace Algorithms.FirstTask.first
 {
     public class TimSort
     {

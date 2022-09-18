@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Algorithms.tasks;
-using Algorithms.tasks.third;
+using Algorithms.FirstTask;
+using Algorithms.FirstTask.first;
+using Algorithms.FirstTask.second;
 
 namespace Algorithms
 {

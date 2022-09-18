@@ -1,4 +1,4 @@
-﻿namespace Algorithms
+﻿namespace Algorithms.FirstTask.second
 {
     public class Matrix
     {

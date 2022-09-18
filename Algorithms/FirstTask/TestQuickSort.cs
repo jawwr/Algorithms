@@ -1,8 +1,8 @@
-﻿namespace Algorithms.tasks
+﻿namespace Algorithms.FirstTask
 {
-    public class QuickSort
+    public class TestQuickSort
     {
-        public void Sort(int[] vector, int from, int to)
+        public void QuickSort(int[] vector, int from, int to)
         {
             int pivot;
             if (from < to)
@@ -10,12 +10,12 @@
                 pivot = Partitioner(vector, from, to);
                 if (pivot > 1)
                 {
-                    Sort(vector, from, pivot - 1);
+                    QuickSort(vector, from, pivot - 1);
                 }
 
                 if (pivot + 1 < to)
                 {
-                    Sort(vector, pivot + 1, to);
+                    QuickSort(vector, pivot + 1, to);
                 }
             }
         }

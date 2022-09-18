@@ -1,4 +1,4 @@
-﻿namespace Algorithms.tasks.third
+﻿namespace Algorithms.FirstTask.third
 {
     public class FloydWarshallAlgorithm
     {
