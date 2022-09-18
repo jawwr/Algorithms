@@ -1,17 +1,16 @@
-﻿namespace Algorithms.FirstTask.first
+﻿using System;
+
+namespace Algorithms.FirstTask.first
 {
-    public class FourthSolution : Algorithm
+    public class FourthSolution
     {
-        public override string GetAlgName() => "";
-
-        public override int Calculate(int[] vector)
+        public double Calculate(double[] vector, double x)
         {
-            int result = 1;
-            foreach (var num in vector)
+            double result = 0;
+            for (int k = 0; k < vector.Length; k++)
             {
-                result *= num;//TODO доделать
+                result += vector[k] * Math.Pow(x, k);
             }
-
             return result;
         }
     }
