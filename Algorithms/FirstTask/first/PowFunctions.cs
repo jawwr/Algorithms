@@ -53,15 +53,5 @@
 
             return result;
         }
-
-        public int MyRecPow(int num, int rank)
-        {
-            if (rank == 1)
-            {
-                return num;
-            }
-
-            return num * MyRecPow(num, rank - 1);
-        }
     }
 }
