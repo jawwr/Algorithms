@@ -52,5 +52,7 @@ namespace Algorithms.Tester
                 SaveManager.SaveTable(file, groupAr, "ID (n)", "Time (Milliseconds)");
             }
         }
+        
+
     }
 }

@@ -4,7 +4,7 @@ using Algorithms.FirstTask.second;
 using Algorithms.FirstTask.third;
 using Algorithms.Tester;
 using Algorithms.Tester.interfaces;
-using Matrix = Algorithms.Tester.DataTypes.Matrix;
+using MatrixType = Algorithms.Tester.DataTypes.Matrix;
 using Vector = Algorithms.Tester.DataTypes.Vector;
 
 namespace Algorithms
@@ -19,8 +19,9 @@ namespace Algorithms
             TestVectorAlgorithm(x => BoubleSort.Calculate(x), "BoubleSort", 5);
             TestVectorAlgorithm(x => QuickSort.Calculate(x), "QuickSort", 5);
             TestVectorAlgorithm(x => ShellAlgorithm.Calculate(x), "ShellAlgorithm", 5);
-            TestQuadraticMatrixAlgorithm(x => FloydWarshallAlgorithm.Calculate(x), "FloydWarshallAlgorithm", 5);*/
-            TestQuadraticMatrixAlgorithm(x => DetermMatrix.Calculate(x), "DetermMatrixAlgorithm", 5);
+            TestQuadraticMatrixAlgorithm(x => FloydWarshallAlgorithm.Calculate(x), "FloydWarshallAlgorithm", 5);
+            TestQuadraticMatrixAlgorithm(x => DetermMatrix.Calculate(x), "DetermMatrixAlgorithm", 5);*/
+            TestDoubleMatrixAlgorithm(Matrix.MultipleMatrix,  "MulMatrix", 5);
         }
 
         private static void TestVectorAlgorithm(Func<double[], object> func, string name, int iterCount)
@@ -41,7 +42,7 @@ namespace Algorithms
             ITester<double> tester = new TimeTester();
             for (int i = 0; i < 300; i++)
             {
-                var matrix = Matrix.RandomGenerate(i, i);
+                var matrix = MatrixType.RandomGenerate(i, i);
                 tester.Test(() => func.Invoke(matrix), iterCount, name);
                 Console.WriteLine("Тест алгоритма: {0} | Итерация: {1}", name, i);
             }
@@ -49,17 +50,16 @@ namespace Algorithms
             tester.AllResults.Clear();
         }
         
-        public static void TestMatrixAlgorithm(Func<double[,], object> func, string name, int iterCount)
+        public static void TestDoubleMatrixAlgorithm(Func<double[,],double[,], object> func, string name, int iterCount)
         {
             ITester<double> tester = new TimeTester();
-            for (int i = 0; i < 2000; i++)
+            for (int i = 0; i < 300; i++)
             {
-                for (int j = 0; j < 2000; j++)
-                {
-                    var matrix = Matrix.RandomGenerate(i, j);
-                    tester.Test(() => func.Invoke(matrix), iterCount, name);
-                    Console.WriteLine("Тест алгоритма: {0} | Итерация: {1}x{2}", name, i, j);
-                }
+                var matrix1 = MatrixType.RandomGenerate(i, i);
+                var matrix2 = MatrixType.RandomGenerate(i, i);
+                tester.Test(() => func.Invoke(matrix1, matrix2), iterCount, name);
+                Console.WriteLine("Тест алгоритма: {0} | Итерация: {1}x{2}", name, i, i);
+                
             }
             tester.SaveAsExcel(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), name);
             tester.AllResults.Clear();
