@@ -1,8 +1,8 @@
 ﻿namespace Algorithms.FirstTask.first
 {
-    public class BoubleSort
+    public static class BoubleSort
     {
-        public int[] Calculate(int[] vector)
+        public static double[] Calculate(double[] vector)
         {
             for (int i = 0; i < vector.Length; i++)
             {
@@ -14,7 +14,6 @@
                     }
                 }
             }
-
             return vector;
         }
     }

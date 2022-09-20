@@ -1,17 +1,14 @@
 ﻿namespace Algorithms.FirstTask.first
 {
-    public class SumFunction : Algorithm
+    public static class SumFunction
     {
-        public override string GetAlgName() => "SumFunction";
-
-        public override int Calculate(int[] vector)
+        public static int Calculate(double[] vector)
         {
             int result = 0;
             foreach (var num in vector)
             {
-                result += num;
+                result += (int)num;
             }
-
             return result;
         }
     }

@@ -2,7 +2,7 @@
 {
     public class ShellAlgorithm
     {
-        public static void Calculate(int[] vector)
+        public static double[] Calculate(double[] vector)
         {
             int size = vector.Length;
 
@@ -10,7 +10,7 @@
             {
                 for (int i = h; i < size; i += 1)
                 {
-                    int temp = vector[i];
+                    double temp = vector[i];
 
                     int j;
                     for (j = i; j >= h && vector[j - h] > temp; j -= h)
@@ -21,6 +21,8 @@
                     vector[j] = temp;
                 }
             }
+
+            return vector;
         }
     }
 }

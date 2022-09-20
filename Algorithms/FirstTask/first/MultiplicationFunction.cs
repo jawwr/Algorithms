@@ -1,17 +1,14 @@
 ﻿namespace Algorithms.FirstTask.first
 {
-    public class MultiplicationFunction : Algorithm
+    public static class MultiplicationFunction
     {
-        public override string GetAlgName() => "MultiplicationFunction";
-
-        public override int Calculate(int[] vector)
+        public static int Calculate(double[] vector)
         {
             int result = 1;
             foreach (var num in vector)
             {
-                result *= num;
+                result *= (int)num;
             }
-
             return result;
         }
     }

@@ -1,49 +1,60 @@
-﻿namespace Algorithms.FirstTask.first
+﻿using System;
+
+namespace Algorithms.FirstTask.first
 {
-    public class QuickSort
+    public static class QuickSort
     {
-        public void Sort(int[] vector, int from, int to)
+        public static double[] Calculate(double[] vector)
         {
-            int pivot;
-            if (from < to)
-            {
-                pivot = Partitioner(vector, from, to);
-                if (pivot > 1)
-                {
-                    Sort(vector, from, pivot - 1);
-                }
+            if (vector.Length <= 1) return vector;
+            var randomNum = vector[new Random().Next(0, vector.Length)];
 
-                if (pivot + 1 < to)
-                {
-                    Sort(vector, pivot + 1, to);
-                }
+            int bigCount = 0;
+            int lowCount = 0;
+            int equalCount = 0;
+            
+            foreach(var element in vector)
+            {
+                if (element > randomNum) 
+                    bigCount++;
+                else if (element < randomNum) 
+                    lowCount++;
+                else 
+                    equalCount++;
             }
-        }
 
-        private int Partitioner(int[] vector, int from, int to)
-        {
-            int pivot = vector[from];
-            while (true)
+            double[] bigElements = new double[bigCount];
+            double[] lowElements = new double[lowCount];
+            double[] equalElements = new double[equalCount];
+
+            int lowindex = 0;
+            int bigindex = 0;
+            int equalindex = 0;
+
+            for (int i = 0; i < vector.Length; i++)
             {
-                while (vector[from] < pivot)
-                {
-                    from++;
-                }
-
-                while (vector[to] > pivot)
-                {
-                    to--;
-                }
-
-                if (from < to)
-                {
-                    (vector[from], vector[to]) = (vector[to], vector[from]);
-                }
+                var element = vector[i];
+                if (element > randomNum)
+                    bigElements[bigindex++] = element;                  
+                else if (element < randomNum)
+                    lowElements[lowindex++] = element;
                 else
-                {
-                    return to;
-                }
+                    equalElements[equalindex++] = element;
             }
+
+            Calculate(lowElements);
+            Calculate(bigElements);
+
+            for(int i = 0; i < vector.Length; i++)
+            {
+                if (i < lowElements.Length)
+                    vector[i] = lowElements[i];
+                else if (i - lowElements.Length < equalElements.Length)
+                    vector[i] = equalElements[i - lowElements.Length];
+                else
+                    vector[i] = bigElements[i - lowElements.Length - equalElements.Length];
+            }
+            return vector;
         }
     }
 }
