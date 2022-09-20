@@ -1,57 +1,91 @@
 ﻿namespace Algorithms.FirstTask.first
 {
-    public class PowFunctions
+    public static class PowFunctions
     {
-        public int Pow(int num, int rank)
+        public static (double, int) Pow(int num, int rank, int count = 0)
         {
-            int result = 1;
+            double result = 1;
+            count += 1;
             for (int i = 0; i < rank; i++)
             {
                 result *= num;
+                count += 1;
             }
-
-            return result;
+            return (result, count);
         }
 
-        public int RecPow(int num, int rank)
+        public static (double, int) RecPow(int num, int rank, int count = 0)
         {
-            if (rank == 0) return 1;
-            int result = RecPow(num, rank / 2);
+            if (rank == 0)
+            {
+                count += 1;
+                return (1, count);
+            }
+            (double, int) result = RecPow(num, rank / 2, count);
             if (rank % 2 == 1)
             {
-                result = result * result * num;
+                result.Item1 = result.Item1 * result.Item1 * num;
+                result.Item2 += 1;
             }
             else
             {
-                result *= result;
+                result.Item1 *= result.Item1;
+                result.Item2 += 1;
             }
-
-            return result;
+            return (result.Item1, result.Item2);
         }
 
-        public int QuickPow(int num, int rank)
+        public static (double, int) QuickPow(int num, int rank, int count = 0)
         {
-            int result;
+            double result;
             if (rank % 2 == 1)
             {
+                count += 1;
                 result = num;
             }
             else
             {
+                count += 1;
                 result = 1;
             }
 
             while (rank != 0)
             {
                 rank /= 2;
+                count += 1;
                 num *= num;
+                count += 1;
                 if (rank % 2 == 1)
                 {
+                    count += 1;
                     result *= num;
                 }
             }
+            return (result, count);
+        }
 
-            return result;
+        public static (double, int) QuickPowAlt(int num, int rank, int count = 0)
+        {
+            double result = 1;
+            count += 1;
+            while (rank != 0)
+            {
+                if (rank % 2 == 0)
+                {
+                    count += 1;
+                    num *= num;
+                    count += 1;
+                    rank /= 2;
+                }
+                else
+                {
+                    count += 1;
+                    result *= num;
+                    count += 1;
+                    rank--;
+                }
+            }
+            return (result, count);
         }
     }
 }

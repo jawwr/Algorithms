@@ -6,7 +6,6 @@ namespace Algorithms.Tester.interfaces
 {
     public interface ITester<TResult>
     {
-        public void Test(Action algorithm, int iterNumber, string name);
         public TestResult<TResult> LastResult { get; }
         public IList<TestResult<TResult>> AllResults { get; }
 

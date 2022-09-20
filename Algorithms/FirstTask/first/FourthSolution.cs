@@ -2,9 +2,9 @@
 
 namespace Algorithms.FirstTask.first
 {
-    public class FourthSolution
+    public static class FourthSolution
     {
-        public double Calculate(double[] vector, double x)
+        public static double Calculate(double[] vector, double x = 1.5)
         {
             double result = 0;
             for (int k = 0; k < vector.Length; k++)
