@@ -11,6 +11,9 @@ namespace Algorithms.Tester.DataTypes
 
         public Matrix(int rowLength, int columnLength)
         {
+            if (rowLength < 1) rowLength = 1;
+            if (columnLength < 1) columnLength = 1;
+            
             RowLength = rowLength;
             ColumnLength = columnLength;
             _values = new double[rowLength, columnLength];
@@ -18,6 +21,9 @@ namespace Algorithms.Tester.DataTypes
 
         public static double[,] RandomGenerate(int row, int column)
         {
+            if (row < 1) row = 1;
+            if (column < 1) column = 1;
+            
             var rnd = new Random();
             double[,] matrix = new double[row, column];
             

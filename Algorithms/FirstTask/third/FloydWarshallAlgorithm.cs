@@ -1,8 +1,8 @@
 ﻿namespace Algorithms.FirstTask.third
 {
-    public class FloydWarshallAlgorithm
+    public static class FloydWarshallAlgorithm
     {
-        public static void Calculate(uint[,] graph)
+        public static double[,] Calculate(double[,] graph)
         {
             var size = graph.GetLength(0);
             for (int k = 0; k < size; k++)
@@ -20,6 +20,8 @@
                     }
                 }
             }
+
+            return graph;
         }
     }
 }
