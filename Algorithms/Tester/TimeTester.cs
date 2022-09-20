@@ -49,7 +49,7 @@ namespace Algorithms.Tester
             {
                 var groupAr = group.ToArray();
                 // if (!emissionsEnabled) Services.DeleteEmissions(groupAr);
-                SaveManager.SaveTable(file, groupAr, "ID (n)", "Time (Milliseconds)");
+                SaveManager.SaveTable(file, groupAr, "Количество (n)", "Время (Миллисекунды)");
             }
         }
         
