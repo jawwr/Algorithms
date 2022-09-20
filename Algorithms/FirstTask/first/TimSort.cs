@@ -2,105 +2,101 @@
 
 namespace Algorithms.FirstTask.first
 {
-    public class TimSort
+    public static class TimSort
     {
-        public static int[] Calculate(int[] vector)
+        public static double[] Calculate(double[] arr)
         {
-            var minRun = GetMinRun(vector.Length);
-            var length = vector.Length;
-            // for (int i = 0; i < length; i++)
-            // {
-            //     InsertionSort(vector, i, Math.Min((i + minRun - 1), (length - 1)));
-            // }
-
-            for (int size = minRun; size < length; size = 2 * size)
+            static int GetMinrun(int n)
             {
-                for (int left = 0; left < length; left += 2 * size)
+                int r = 0;
+                while (n >= 64)
                 {
+                    r |= n & 1;
+                    n >>= 1;
+                }
+                return n + r;
+            }
+            var minRun = GetMinrun(arr.Length);
+            var lenght = arr.Length;
+            // Sort individual subarrays of size RUN
+            for (int i = 0; i < lenght; i += minRun)
+            {
+                InsertionSort(arr, i, Math.Min((i + minRun - 1), (lenght - 1)));
+            }
+            for (int size = minRun; size < lenght; size = 2 * size)
+            {
+                for (int left = 0; left < lenght; left += 2 * size)
+                {
+
                     int mid = left + size - 1;
-                    int right = Math.Min((left + 2 * size - 1), (length - 1));
+                    int right = Math.Min((left + 2 * size - 1), (lenght - 1));
+
                     if (mid < right)
                     {
-                        Merge(vector, left, mid, right);
+                        Merge(arr, left, mid, right);
                     }
+
                 }
             }
-
+            return arr;
+        }
+        public static double[] InsertionSort(double[] vector, int left = 0, int right = 0)
+        {
+            if (right == 0) right = vector.Length - 1;
+            for(int j = left + 1; j <= right; j++)
+            {
+                var currentEl = vector[j];
+                var i = j - 1;
+                while((i >= left) && (vector[i] > currentEl))
+                {
+                    vector[i + 1] = vector[i];
+                    i--;
+                }
+                vector[i + 1] = currentEl;
+            }
             return vector;
         }
-        static int[] InsertionSort(int[] inputArray)
+        
+        private static void Merge(double[] arr, int left, int midle, int right)
         {
-            for (int i = 0; i < inputArray.Length - 1; i++)
-            {
-                for (int j = i + 1; j > 0; j--)
-                {
-                    if (inputArray[j - 1] > inputArray[j])
-                    {
-                        (inputArray[j - 1], inputArray[j]) = (inputArray[j], inputArray[j - 1]);
-                    }
-                }
-            }
-            return inputArray;         
-        }
+            int lenghtLeft = midle - left + 1, lenghtRight = right - midle;
+            double[] leftArr = new double[lenghtLeft];
+            double[] rightArr = new double[lenghtRight];
+            for (int x = 0; x < lenghtLeft; x++)
+                leftArr[x] = arr[left + x];
+            for (int x = 0; x < lenghtRight; x++)
+                rightArr[x] = arr[midle + 1 + x];
 
-        private static void Merge(int[] vector, int left, int mid, int right)
-        {
-            int lengthLeft = mid - left + 1;
-            int lengthRight = right - mid;
-            int[] leftArr = new int[lengthLeft];
-            int[] rightArr = new int[lengthRight];
-            for (int x = 0; x < lengthLeft; x++)
-            {
-                leftArr[x] = vector[left + x];
-            }
+            int i = 0;
+            int j = 0;
+            int k = left;
 
-            for (int x = 0; x < lengthRight; x++)
-            {
-                rightArr[x] = vector[mid + 1 + x];
-            }
-
-            int i = 0, j = 0, k = left;
-            while (i < lengthRight && j < lengthRight)
+            while (i < lenghtLeft && j < lenghtRight)
             {
                 if (leftArr[i] <= rightArr[j])
                 {
-                    vector[k] = leftArr[i];
+                    arr[k] = leftArr[i];
                     i++;
                 }
                 else
                 {
-                    vector[k] = rightArr[j];
+                    arr[k] = rightArr[j];
                     j++;
                 }
                 k++;
             }
-
-            while (i < lengthLeft)
+            while (i < lenghtLeft)
             {
-                vector[k] = leftArr[j];
+                arr[k] = leftArr[i];
                 k++;
                 i++;
             }
-
-            while (j < lengthRight)
+            while (j < lenghtRight)
             {
-                vector[k] = rightArr[j];
+                arr[k] = rightArr[j];
                 k++;
                 j++;
             }
-            
-        }
-
-        private static int GetMinRun(int n)
-        {
-            int r = 0;
-            while (n >= 64)
-            {
-                r |= n & 1;
-                n >>= 1;
-            }
-
-            return n + r;
         }
     }
 }

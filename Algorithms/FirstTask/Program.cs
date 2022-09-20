@@ -20,8 +20,9 @@ namespace Algorithms
             TestVectorAlgorithm(x => QuickSort.Calculate(x), "QuickSort", 5);
             TestVectorAlgorithm(x => ShellAlgorithm.Calculate(x), "ShellAlgorithm", 5);
             TestQuadraticMatrixAlgorithm(x => FloydWarshallAlgorithm.Calculate(x), "FloydWarshallAlgorithm", 5);
-            TestQuadraticMatrixAlgorithm(x => DetermMatrix.Calculate(x), "DetermMatrixAlgorithm", 5);*/
-            TestDoubleMatrixAlgorithm(Matrix.MultipleMatrix,  "MulMatrix", 5);
+            TestQuadraticMatrixAlgorithm(x => DetermMatrix.Calculate(x), "DetermMatrixAlgorithm", 5);
+            TestDoubleMatrixAlgorithm(Matrix.MultipleMatrix,  "MulMatrix", 5);*/
+            TestVectorAlgorithm(x => TimSort.Calculate(x), "TimSort", 5);
         }
 
         private static void TestVectorAlgorithm(Func<double[], object> func, string name, int iterCount)
